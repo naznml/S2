@@ -1,1 +1,645 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>5-нұсқа — Магистратура КТ</title>
 
+<style>
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  font-family:Arial,sans-serif;
+  background:linear-gradient(135deg,#faf5ff,#fff7ed,#f8fafc);
+  color:#1f2937;
+  user-select:none;
+}
+.wrapper{
+  max-width:980px;
+  margin:auto;
+  padding:16px;
+}
+.hero{
+  background:linear-gradient(135deg,#3b0764,#7e22ce,#f59e0b);
+  color:white;
+  padding:32px 20px;
+  border-radius:26px;
+  text-align:center;
+  margin-bottom:18px;
+  box-shadow:0 12px 30px rgba(126,34,206,.25);
+}
+.hero h1{
+  margin:0 0 10px;
+  font-size:32px;
+  line-height:1.2;
+}
+.hero p{
+  margin:8px 0;
+  font-size:16px;
+  line-height:1.5;
+}
+.badge{
+  display:inline-block;
+  background:white;
+  color:#7e22ce;
+  padding:9px 15px;
+  border-radius:999px;
+  font-weight:bold;
+  margin-top:12px;
+  font-size:14px;
+}
+.copyright-box{
+  background:#fffbeb;
+  border:2px solid #f59e0b;
+  color:#78350f;
+  padding:16px;
+  border-radius:20px;
+  margin-bottom:18px;
+  line-height:1.55;
+  text-align:center;
+  font-weight:bold;
+}
+.nav-buttons{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:10px;
+  margin-bottom:18px;
+}
+.nav-buttons a{
+  text-align:center;
+  text-decoration:none;
+  background:white;
+  color:#6b21a8;
+  padding:14px;
+  border-radius:16px;
+  font-weight:bold;
+  box-shadow:0 6px 18px rgba(0,0,0,.08);
+  border:1px solid #e9d5ff;
+}
+.nav-buttons a:hover{
+  background:#7e22ce;
+  color:white;
+}
+.card{
+  background:white;
+  padding:22px;
+  border-radius:24px;
+  margin-bottom:18px;
+  box-shadow:0 8px 22px rgba(0,0,0,.08);
+  border:1px solid #f3e8ff;
+}
+.card h2{
+  margin-top:0;
+  color:#6b21a8;
+  font-size:22px;
+}
+.section-title{
+  background:#faf5ff;
+  border-left:6px solid #7e22ce;
+  padding:15px;
+  border-radius:16px;
+  margin-bottom:18px;
+}
+.question{
+  background:#fff;
+  padding:18px;
+  border-radius:18px;
+  margin-bottom:16px;
+  border-left:6px solid #f59e0b;
+  box-shadow:0 4px 12px rgba(0,0,0,.04);
+}
+.question b{
+  display:block;
+  margin-bottom:12px;
+  font-size:16px;
+  line-height:1.5;
+}
+label{
+  display:block;
+  background:#fafafa;
+  padding:12px;
+  border-radius:13px;
+  margin:8px 0;
+  border:1px solid #e5e7eb;
+  cursor:pointer;
+  line-height:1.4;
+}
+label:hover{
+  background:#fef3c7;
+  border-color:#f59e0b;
+}
+input[type="radio"]{
+  margin-right:8px;
+  transform:scale(1.1);
+}
+.question-image{
+  width:100%;
+  max-width:540px;
+  display:block;
+  margin:12px auto 16px;
+  border-radius:16px;
+  border:1px solid #e5e7eb;
+  box-shadow:0 6px 18px rgba(0,0,0,.10);
+}
+.text-box{
+  background:#fffbeb;
+  padding:16px;
+  border-radius:18px;
+  line-height:1.65;
+  margin-bottom:18px;
+  border:1px solid #fde68a;
+  font-size:15px;
+}
+audio{
+  width:100%;
+  margin:12px 0 18px;
+}
+button{
+  width:100%;
+  background:linear-gradient(135deg,#7e22ce,#f59e0b);
+  color:white;
+  border:none;
+  padding:16px;
+  border-radius:16px;
+  cursor:pointer;
+  font-size:18px;
+  font-weight:bold;
+  margin-top:10px;
+  box-shadow:0 10px 22px rgba(126,34,206,.22);
+}
+button:hover{
+  transform:translateY(-1px);
+}
+.result-box{
+  background:#f0fdf4;
+  border:2px solid #22c55e;
+  padding:20px;
+  border-radius:20px;
+  text-align:center;
+  margin-bottom:18px;
+}
+.result-box h2{
+  margin-top:0;
+  color:#15803d;
+}
+.score-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:10px;
+  margin-top:15px;
+}
+.score-item{
+  background:white;
+  padding:12px;
+  border-radius:14px;
+  font-weight:bold;
+  border:1px solid #bbf7d0;
+}
+.correct{
+  color:#15803d;
+  font-weight:bold;
+}
+.wrong{
+  color:#be123c;
+  font-weight:bold;
+}
+.explanation{
+  background:#faf5ff;
+  padding:12px;
+  margin:10px 0 18px;
+  border-radius:13px;
+  line-height:1.5;
+  border:1px solid #e9d5ff;
+}
+.footer{
+  text-align:center;
+  color:#6b7280;
+  font-size:14px;
+  padding:20px 0;
+  line-height:1.5;
+}
+@media(max-width:600px){
+  .wrapper{padding:12px}
+  .hero{padding:24px 16px;border-radius:20px}
+  .hero h1{font-size:24px}
+  .nav-buttons{grid-template-columns:1fr}
+  .card{padding:16px;border-radius:18px}
+  .question{padding:15px}
+  .question b{font-size:15px}
+  label{font-size:15px;padding:11px}
+  button{font-size:16px;padding:15px}
+  .score-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+
+<body>
+<div class="wrapper">
+
+<div class="hero">
+  <h1>5-нұсқа — Магистратура КТ</h1>
+  <p>Сыни ойлау, аналитикалық ойлау және English бөлімі</p>
+  <span class="badge">80 сұрақ • Нәтиже бірден шығады</span>
+</div>
+
+<div class="copyright-box">
+  © @elnazm_ln<br>
+  Бұл сайтты сатуға, көшіруге және рұқсатсыз таратуға болмайды.<br>
+  Сайтты сатуға БОЛМАЙДЫ!
+</div>
+
+<div class="nav-buttons">
+  <a href="#critical">Сыни ойлау</a>
+  <a href="#analytical">Аналитикалық ойлау</a>
+  <a href="#english">Ағылшын тілі</a>
+</div>
+
+<div class="card">
+  <h2>Нұсқаулық</h2>
+  <p>Бұл тест 3 бөлімнен тұрады:</p>
+  <ul>
+    <li><b>Сыни ойлау:</b> 1–15 сұрақ</li>
+    <li><b>Аналитикалық ойлау:</b> 16–30 сұрақ</li>
+    <li><b>English:</b> 1–50 сұрақ</li>
+  </ul>
+  <p>Барлық сұрақтарға жауап беріп, соңында нәтижені және түсіндірмелерді көріңіз.</p>
+</div>
+
+<section id="critical" class="card">
+  <div class="section-title">
+    <h2>Part 1. Сыни ойлау</h2>
+    <p>Дұрыс жауапты таңдаңыз.</p>
+  </div>
+  <div id="criticalQuiz"></div>
+  <div id="criticalResults"></div>
+</section>
+
+<section id="analytical" class="card">
+  <div class="section-title">
+    <h2>Part 2. Аналитикалық ойлау</h2>
+    <p>Мәтінді оқып, дұрыс жауапты таңдаңыз.</p>
+  </div>
+
+  <div id="analyticalIntro"></div>
+
+  <h2>Мәтін 1 — Алоэ</h2>
+  <div class="text-box">
+    <p>Алоэ үй ішінде өсірілетін, әсем де денсаулыққа пайдалы әрі кең таралған өсімдік түрі. Бұл өсімдік халықтық және медициналық тәжірибеде кең қолданылады.</p>
+    <p>Алоэ лалагүлділер тұқымдасына жатады, оның жапырағының сөлін емдікке пайдаланады. Оның кейбір түрі шырмауық тәріздес, мәңгі жасыл, қуаңшылыққа төзімді. Мағынасы «ащы» дегенді білдіреді.</p>
+  </div>
+  <div id="analyticalText1"></div>
+
+  <h2>Мәтін 2 — Эйфель мұнарасы</h2>
+  <div class="text-box">
+    <p>Эйфель мұнарасы – Париждің ең танымал сәулеттік туындысы. Өзінің әйгілі құрастырушысы Густав Эйфельдің атымен аталған. Париждің бұл нышаны уақытша ғимарат ретінде 1889 жылғы әлемдік көрменің кіреберіс дарбазасы қызметін атқару үшін жобаланып, салынған болатын.</p>
+    <p>Манхеттендегі Крайслер салынғанға дейін 40 жыл бойы әлемдегі ең биік мұнара болып саналды.</p>
+    <p>Эйфель мұнарасының бірінші бөлігі – 57 м биіктікте, екінші бөлігі – 115 м, ал үшіншісі – 274 м биіктікте орналасқан. Бүгінде оның әрбір қабатында барлар мен мейрамханалар және бақылау алаңдары бар. Мұнараны тот басудан сақтау мақсатында әр жеті жыл сайын бояу жұмыстары жүргізіледі.</p>
+  </div>
+  <div id="analyticalText2"></div>
+
+  <h2>Мәтін 3 — Құмырсқа</h2>
+  <div class="text-box">
+    <p>Құмырсқа – әлемдегі ең көп тараған жәндіктің бірі. Қазақ «құмырсқадай қажырлы», «құмырсқадай құжынаған», «құмырсқадай еңбекқор» деген тіркестерді бекер айтпаған. Олардың біз білмейтін қызық қыры көп. Оны ғалымдар зерттеп, бұқараға жеткізіп отыр.</p>
+    <p>Құмырсқаларды зерттейтін ғылым – мирмекология деп аталады. Осы мирмеколог мамандардың құмырсқадай тынбай талаптанып, қайнаған тіршілікті зерттеуі нәтижесінде бізге олар туралы көптеген қызықты деректер белгілі болды.</p>
+    <p>Құмырсқа жер жүзінде ең көп тараған жәндік. Әлемдегі ең құрметті мирмекологтардың бірі Эдвард Уилсонның есебі бойынша, бүгін жер бетінде 10 квадриллион, яғни онның 15 дәрежесіндей құмырсқа бар екен. Жан басына шаққанда, бір адамға миллион құмырсқадай келеді.</p>
+  </div>
+  <div id="analyticalText3"></div>
+
+  <h2>Мәтін 4 — Көкпар</h2>
+  <div class="text-box">
+    <p>Көкпар – ұлттық ат спорты ойындарының бірі. Ойынның атауы «көк бөрте» (лақ) сөзінен шыққан.</p>
+    <p>Көкпар – Орталық Азия халықтары арасында кең тараған ойын түрі. Көкпар жігіттердің күш-жігерін, төзімділігін, батылдығы мен ептілігін, ат үстінде мығым отыруын қалыптастырады. Сонымен қатар, көкпар – аттың қалай бапталып үйретілгенін, жүйріктігін де сынайтын спорт.</p>
+    <p>Көкпар жаппай және дода тартыс болып екіге бөлінеді. Жаппай тартыста әркім көкпарға өзі иелік етуге тырысады. Дода тартыста құрамы бірдей екі топ сынға түседі. Мұны кейде марта тарту деп те атайды.</p>
+    <p>Қазақстанда 1949 жылы көкпар жарысының жаңа ережесі бекітілді. Осыған сәйкес көкпар жарысын арнаулы алаңда, командалық сипатта өткізу белгіленді. Ал 1958 жылдан көкпар бәйге алаңдарында (ипподромдарда) өткізіліп келеді. Алаң көлемі қатысушылар санына байланысты. Егер әр командада 5 адамнан болса, ұзындығы 300 м, ені 100 м, 10 адам болса – 500х200 м, 15 адамнан болса – 700х300 м, 20 адамнан болса – 1000х500 м болады.</p>
+  </div>
+  <div id="analyticalText4"></div>
+
+  <div id="analyticalResults"></div>
+</section>
+
+<section id="english" class="card">
+  <div class="section-title">
+    <h2>Part 3. English</h2>
+    <p>Дұрыс жауапты таңдаңыз.</p>
+  </div>
+
+  <h2>Listening 1 — Text 39</h2>
+  <audio controls controlsList="nodownload">
+    <source src="TEXT%2039%20-%20АУДИО.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+  <div id="engListening1"></div>
+
+  <h2>Listening 2 — Text 40</h2>
+  <audio controls controlsList="nodownload">
+    <source src="TEXT%2040%20-%20АУДИО.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+  <div id="engListening2"></div>
+
+  <div class="section-title">
+    <h2>Lexico-Grammar Test</h2>
+    <p>Дұрыс грамматикалық немесе лексикалық нұсқаны таңдаңыз.</p>
+  </div>
+  <div id="engGrammar"></div>
+
+  <h2>Reading 1 — Text 39: International Children's Book Day</h2>
+  <div class="text-box">
+    <p>The International Children's Book Day (ICBD) celebration is on April 2nd every year. This is the birthday of Hans Christian Andersen, one of the most famous children's writers. The celebration started in 1925. Today it is sponsored by the International Board on Books for Young People. This is a non-profit organization which aims at encouraging children to read more books.</p>
+    <p>The ICBD celebrations are held across the world and include guest appearances by famous authors and illustrators, hold writing competitions, awards the competition winners with books. It is a busy day for school and public libraries. The ICBD also aims to promote international understanding through children's books, to increase children's access to books, and to encourage the publication of better quality children's books.</p>
+    <p>Hans Christian Andersen was born in Denmark in 1805 and died in 1875. He was an author and poet. He is best known for his fairy tales, which are loved by children all around the world. Among his best-known stories are The Snow Queen, The Little Mermaid, Thumbelina, and The Ugly Duckling. He became more famous throughout Europe with every book he wrote. His fairy tales have been translated into over 150 languages. Millions of copies are still sold every year. They are so popular that they have become a part of the reading culture of most countries. They are permanently on teachers reading lists and school library shelves. When Andersen was a child, he had a passionate love for books, which prompted him to write stories for children.</p>
+  </div>
+  <div id="engReading1"></div>
+
+  <h2>Reading 2 — Text 40: Thanksgiving</h2>
+  <div class="text-box">
+    <p>Thanksgiving is a holiday celebrated predominantly in North America, and it possesses a different meaning in each of the countries where it's acknowledged.</p>
+    <p>In the United States, Thanksgiving is a federal holiday, meaning all government employees and most private employees are given a day off of work, and always takes places on the Fourth Thursday in November, regardless of the date.</p>
+    <p>The holiday signifies the immense progress made by pilgrims, or some of the first travelers to North America, at Plymouth Plantation circa 1621. It was at this time that the hungry and weary Pilgrims were taught by Native Americans how to grow and produce food on North America's unique terrain. Once they'd grown and caught an abundance of food, the Pilgrims were expectedly thankful, and they celebrated alongside the Native Americans who provided them with such valuable assistance. President Abraham Lincoln initiated the contemporary practice of Thanksgiving by calling for a "day of Thanksgiving" during one of his Civil War addresses.</p>
+    <p>In America today, Thanksgiving remains firmly engrained in its historical roots, and is widely considered to be a day for giving thanks for good food, good times, and family. Thanksgiving dinner generally consists of turkey, mashed potatoes, stuffing, vegetables, gravy, and ample desserts. To be sure, indulging in abundance is a cornerstone of the holiday, as doing so could only be possible if one possesses abundance.</p>
+  </div>
+  <div id="engReading2"></div>
+
+  <div id="englishResults"></div>
+</section>
+
+<div class="card">
+  <button onclick="checkAnswers()">Нәтижені көру / Показать результат</button>
+</div>
+
+<div id="results"></div>
+
+<div class="footer">
+  © @elnazm_ln — Сайтты сатуға, көшіруге және рұқсатсыз таратуға болмайды.
+</div>
+
+</div>
+
+<script>
+const criticalQuestions=[
+{q:"1. Бағанды салыстырыңыз: A шамасы = 1/2 + 5/6, B шамасы = 1.",options:["A) Берілген мәлімет жеткіліксіз","B) A шамасы үлкен","C) Шамалар тең","D) B шамасы үлкен"],answer:1,explanation:"1/2 + 5/6 = 3/6 + 5/6 = 8/6 = 4/3. 4/3 саны 1-ден үлкен. Дұрыс жауап — B."},
+{q:"2. Сұрақ белгісіндегі санды табыңыз: 2, 4, 8, 16, ?",options:["A) 20","B) 24","C) 30","D) 32","E) 36"],answer:3,explanation:"Әр сан алдыңғы саннан 2 есе үлкен: 2, 4, 8, 16, 32. Дұрыс жауап — D."},
+{q:"3. 2 дәптер және 3 қалам 100 теңге тұрады, 4 дәптер және 1 қалам 50 теңге тұрады. Дәптер қанша теңге, қалам қанша теңге тұрады?",options:["A) Дәптер 2 теңге, қалам 32 теңге тұрады","B) Дәптер 20 теңге, қалам 20 теңге тұрады","C) Дәптер 5 теңге, қалам 40 теңге тұрады","D) Дәптер 30 теңге, қалам 5 теңге тұрады","E) Дәптер 5 теңге, қалам 30 теңге тұрады"],answer:4,explanation:"2d+3q=100, 4d+q=50. Екінші теңдеуден q=50−4d. Біріншісіне қойсақ: 2d+3(50−4d)=100 → 2d+150−12d=100 → d=5. q=30. Дұрыс жауап — E."},
+{q:"4. 2019^2022 дәреже санының соңғы саны?",options:["A) 1","B) 2","C) 3","D) 4","E) 5"],answer:0,explanation:"2019 санының соңғы цифры 9. 9 дәрежелерінің соңғы цифрлары 9,1,9,1 болып қайталанады. 2022 жұп сан, сондықтан соңғы цифр 1. Дұрыс жауап — A."},
+{q:"5. Дүкендегі көйлек бағасы алдымен 20%-ға қымбаттап, содан соң 10%-ға арзандағанда 10800 теңге болды. Көйлектің бастапқы бағасын табыңыз.",options:["A) 900","B) 1000","C) 1300","D) 1400","E) 1600"],answer:1,explanation:"Жауап кілті бойынша дұрыс жауап — B. Дұрыс жауап — 1000."},
+{q:"6. Төменде берілген сандардың ішінен 7-ге қалдықсыз бөлінетін төрт таңбалы санды жазыңыз.",options:["A) 659","B) 815","C) 772","D) 315","E) 244"],answer:3,explanation:"Жауап кілті бойынша дұрыс жауап — D."},
+{q:"7. 9 − (5x − 6)/2 > x + 5 теңдеуінің шешімі.",options:["A) x < 2/5","B) x > 2/3","C) x < 3","D) x < 2","E) x < 2/3"],answer:4,explanation:"Жауап кілті бойынша дұрыс жауап — E."},
+{q:"8. Сызбадан белгісіз бұрыштың градустық мәнін табыңыз.",image:"IMG_0935.jpeg",options:["A) 125","B) 155","C) 145","D) 135","E) 115"],answer:2,explanation:"Түзу бұрыш 180° болады. Берілген бұрыш 35° болса, x = 180° − 35° = 145°. Дұрыс жауап — C."},
+{q:"9. Өрнектің мәнін табыңыз: 1/6 : (1/4 − 1/3) − 6",options:["A) -8","B) -5","C) -7","D) 8","E) 7"],answer:0,explanation:"1/4−1/3 = 3/12−4/12 = −1/12. 1/6 : (−1/12)=1/6×(−12)=−2. −2−6=−8. Дұрыс жауап — A."},
+{q:"10. 130 санын 2:3:5 қатынасындай етіп бөліңіз.",options:["A) 26:49:66","B) 26:39:65","C) 16:49:65","D) 28:39:69","E) 36:39:65"],answer:1,explanation:"Қатынас қосындысы: 2+3+5=10. Бір бөлік: 130/10=13. 2 бөлік=26, 3 бөлік=39, 5 бөлік=65. Дұрыс жауап — B."},
+{q:"11. Диаграммада жетінші сынып оқушыларының оқу үлгерімі көрсетілген. Жалпы екпінді білім алушылар саны неше?",image:"IMG_0931.jpeg",options:["A) 4","B) 21","C) 5","D) 9","E) 14"],answer:1,explanation:"Диаграммадағы екпінді оқушылар саны: 7А — 7, 7Ә — 6, 7Б — 8. Барлығы: 7+6+8=21. Дұрыс жауап — B."},
+{q:"12. Диаграммада олимпиадаға қатысқан 6 оқушының ұпайлары көрсетілген. Диаграмма белгілеріне сүйеніп, қанша оқушының орташа ұпайдан төмен ұпай жинағанын анықтаңыз.",image:"IMG_0932.jpeg",options:["A) 1","B) 2","C) 3","D) 4","E) 5"],answer:2,explanation:"Жауап кілті бойынша орташа ұпайдан төмен жинаған оқушылар саны — 3. Дұрыс жауап — C."},
+{q:"13. Егер фигураның периметрі 32 см екені белгілі болса, онда боялған фигураның ауданын табыңыз.",image:"IMG_0933.jpeg",options:["A) 9 см²","B) 16 см²","C) 24 см²","D) 36 см²","E) 64 см²"],answer:1,explanation:"Жауап кілті бойынша боялған бөліктің ауданы 16 см². Дұрыс жауап — B."},
+{q:"14. Бағанды салыстырыңыз: A шамасы — шеңбер ұзындығы 12π болса, радиусы; B шамасы — шеңбер ауданы 9π болса, диаметрі.",options:["A) Берілген мәлімет жеткіліксіз","B) A шамасы үлкен","C) Шамалар тең","D) B шамасы үлкен"],answer:2,explanation:"A: 2πr=12π, r=6. B: πr²=9π, r=3, диаметрі 6. Екеуі тең. Дұрыс жауап — C."},
+{q:"15. Суреттегі фигураның боялған бөлігінің ауданы берілген. Шаршы қабырғасын табыңыз.",image:"IMG_0934.jpeg",options:["A) 9 см","B) 1 см","C) 6 см","D) 4 см","E) 2 см"],answer:2,explanation:"Жауап кілті бойынша шаршы қабырғасы 6 см. Дұрыс жауап — C."}
+];
+
+const analyticalIntroQuestions=[
+{q:"16. Берілген мақал-мәтелді аяқтаңыз: […] — отбасынан басталады.",options:["A) Отбасы","B) Отан","C) Ел","D) Мемлекет","E) Адам"],answer:1,explanation:"Дұрыс мақал: «Отан — отбасынан басталады». Дұрыс жауап — B."},
+{q:"17. Мәтіндегі бос орынды толтырыңыз. Көктем – табиғаттың той-думаны. Көктемнің беташары – […] айы.",options:["A) ақпан","B) наурыз","C) маусым","D) қаңтар","E) желтоқсан"],answer:1,explanation:"Көктемнің алғашқы негізгі айы — наурыз. Дұрыс жауап — B."},
+{q:"18. Абай Құнанбаев: «Әсемпаз болма әр неге, Өнерпаз болсаң, арқалан. Сен де – бір […], дүниеге Кетігін тап та, бар қалаң!»",options:["A) қызық","B) жалған","C) кірпіш","D) жарқын","E) ағаш"],answer:2,explanation:"Абай өлеңіндегі дұрыс сөз — «кірпіш». Дұрыс жауап — C."}
+];
+
+const analyticalText1Questions=[
+{q:"19. Асты сызылған сөздің мәтіндегі мағынасын табыңыз: «кең таралған» өсімдік түрі.",options:["A) пайдасы көп","B) өте танымал","C) далада өсетін","D) үйде өсетін","E) тармақталып өсетін"],answer:0,explanation:"Жауап кілті бойынша дұрыс жауап — A."},
+{q:"20. Мәтіндегі негізгі ойды табыңыз.",options:["A) үй ішінде өсірілетіндігі","B) денсаулыққа пайдалы екендігі","C) суға төзімділігі","D) жапырақтарының жалпақтығы","E) дәмінің ащы екендігі"],answer:1,explanation:"Мәтінде алоэнің денсаулыққа пайдалы әрі емдік мақсатта қолданылатыны айтылған. Дұрыс жауап — B."},
+{q:"21. Мәтіндегі «ащы» сөзінің мағынасына жақын сөздер қатарын табыңыз.",options:["A) кермек, дәмді","B) тәтті, дәмді","C) қышқыл, тәтті","D) кермек, қышқыл","E) қою, тәтті"],answer:3,explanation:"«Ащы» сөзіне мағынасы жақын сөздер — кермек, қышқыл. Дұрыс жауап — D."}
+];
+
+const analyticalText2Questions=[
+{q:"22. Бос орынды толтырыңыз. Эйфель мұнарасы өзінің әйгілі құрастырушысы ____ атымен аталған.",options:["A) Морис Кёхлен","B) Эжен Фрейсине","C) Густав Эйфель","D) Маргерит Годле","E) Норман Фостер"],answer:2,explanation:"Мәтінде мұнара Густав Эйфельдің атымен аталғаны айтылған. Дұрыс жауап — C."},
+{q:"23. Мәтіндегі «биік» сөзінің мағынасына жақын сөзді табыңыз.",options:["A) жоғары","B) зәулім","C) зор","D) ұзын","E) көрсетілген барлық жауап дұрыс"],answer:4,explanation:"Берілген нұсқалардың барлығы контекстке қарай «биік» сөзіне жақын мағына бере алады. Дұрыс жауап — E."},
+{q:"24. Эйфель мұнарасының екінші бөлігінің биіктік өлшемі.",options:["A) 57","B) 93","C) 154","D) 274","E) 115"],answer:4,explanation:"Мәтінде екінші бөлігі 115 м биіктікте орналасқаны айтылған. Дұрыс жауап — E."}
+];
+
+const analyticalText3Questions=[
+{q:"25. Бос орынды толтырыңыз. Құмырсқаларды зерттейтін ғылым — ____ деп аталады.",options:["A) лепидоптерология","B) нематология","C) гельминтология","D) мирмекология","E) орнитология"],answer:3,explanation:"Құмырсқаларды зерттейтін ғылым — мирмекология. Дұрыс жауап — D."},
+{q:"26. Сұраққа жауап беріңіз. Жан басына шаққандағы құмырсқа саны?",options:["A) Екі миллион","B) Үш миллион","C) Бір миллион","D) Бір жарым миллион","E) Жарты миллион"],answer:2,explanation:"Мәтінде бір адамға миллион құмырсқадай келеді деп берілген. Дұрыс жауап — C."},
+{q:"27. Мәтіндегі «қажырлы» сөзінің мағынасына жақын сөзді табыңыз.",options:["A) күшті","B) әлсіз","C) айбатты","D) нәзік","E) айбарлы"],answer:0,explanation:"«Қажырлы» сөзі күшті, табанды, еңбекқор мағынасын береді. Дұрыс жауап — A."}
+];
+
+const analyticalText4Questions=[
+{q:"28. Асты сызылған сөздің мәтіндегі мағынасын табыңыз. Көкпар — Орталық Азия халықтары арасында кең тараған ойын түрі.",options:["A) жан-жақты","B) танымал","C) атақты","D) белгілі","E) көрсетілген барлық жауап дұрыс"],answer:4,explanation:"«Кең тараған» — танымал, белгілі, атақты деген мағына береді. Дұрыс жауап — E."},
+{q:"29. Сұраққа жауап беріңіз. Қазақстанда қай жылы көкпар жарысының жаңа ережесі бекітілді?",options:["A) 1939","B) 1949","C) 1969","D) 1979","E) 1989"],answer:1,explanation:"Мәтінде Қазақстанда 1949 жылы жаңа ереже бекітілгені айтылған. Дұрыс жауап — B."},
+{q:"30. Бос орынды толтырыңыз. Егер әр командада 20 адамнан болса, алаң көлемі ____ болады.",options:["A) 700х300","B) 1000х500","C) 500х200","D) 400х200","E) 800х600"],answer:1,explanation:"Мәтінде 20 адамнан болса, алаң көлемі 1000х500 м болады деп берілген. Дұрыс жауап — B."}
+];
+
+const englishQuestions=[
+{section:"Listening",part:"engListening1",q:"1. Tim ____ in a company.",options:["A) manages a team","B) has flexible hours","C) travels a lot","D) watches DVD"],answer:0,explanation:"Жауап кілті бойынша Tim manages a team. Дұрыс жауап — A."},
+{section:"Listening",part:"engListening1",q:"2. According to the dialogue Pat and Tim both love ____.",options:["A) concerts","B) karate","C) golf","D) music"],answer:2,explanation:"Жауап кілті бойынша Pat and Tim both love golf. Дұрыс жауап — C."},
+{section:"Listening",part:"engListening1",q:"3. Tim meets his colleagues in ____ after work.",options:["A) a restaurant","B) French cinema","C) the club","D) the office"],answer:0,explanation:"Жауап кілті бойынша Tim meets his colleagues in a restaurant. Дұрыс жауап — A."},
+{section:"Listening",part:"engListening1",q:"4. Tim ____ meets his colleagues after work.",options:["A) never","B) sometimes","C) usually","D) often"],answer:1,explanation:"Жауап кілті бойынша Tim sometimes meets his colleagues after work. Дұрыс жауап — B."},
+{section:"Listening",part:"engListening1",q:"5. Tim sometimes ____ with his colleagues after work.",options:["A) watches sports","B) undergoes","C) does sport","D) goes out"],answer:3,explanation:"Жауап кілті бойынша Tim sometimes goes out with his colleagues. Дұрыс жауап — D."},
+{section:"Listening",part:"engListening1",q:"6. The dialogue is mainly about Pat and Tim discussing ____.",options:["A) golf and cuisine","B) jobs and leisure","C) pastime activities and classes","D) films and discos"],answer:1,explanation:"Диалог Pat пен Tim-нің жұмысы және бос уақыты туралы. Дұрыс жауап — B."},
+{section:"Listening",part:"engListening1",q:"7. According to the dialogue Pat isn’t very good at ____.",options:["A) computer games","B) French films","C) jazz music","D) the guitar"],answer:0,explanation:"Жауап кілті бойынша Pat computer games-те жақсы емес. Дұрыс жауап — A."},
+{section:"Listening",part:"engListening1",q:"8. Normally Tim works about ____ hours a week.",options:["A) 10","B) 25","C) 35","D) 45"],answer:2,explanation:"Жауап кілті бойынша Tim аптасына 35 сағат жұмыс істейді. Дұрыс жауап — C."},
+
+{section:"Listening",part:"engListening2",q:"9. Henry VIII ____ his wife Catherine.",options:["A) divorced","B) tortured","C) worshipped","D) beheaded"],answer:0,explanation:"Жауап кілті бойынша Henry VIII divorced his wife Catherine. Дұрыс жауап — A."},
+{section:"Listening",part:"engListening2",q:"10. ____ was the 2nd wife of the King Henry.",options:["A) Anne Boleyn","B) Elizabeth I","C) Bloody Tower","D) Catherine"],answer:0,explanation:"Henry VIII-дің екінші әйелі Anne Boleyn болған. Дұрыс жауап — A."},
+{section:"Listening",part:"engListening2",q:"11. Anne was ____ on May 19, 1536.",options:["A) crowned","B) beheaded","C) imprisoned","D) arrested"],answer:1,explanation:"Anne Boleyn 1536 жылы 19 мамырда beheaded болды. Дұрыс жауап — B."},
+{section:"Listening",part:"engListening2",q:"12. The tourists came to the tower that has a very close connection with ____.",options:["A) queen Catherine","B) the guide","C) Henry VII","D) Anne Boleyn"],answer:3,explanation:"Мұнара Anne Boleyn-мен байланысты. Дұрыс жауап — D."},
+{section:"Listening",part:"engListening2",q:"13. The tower is called the ____ Tower.",options:["A) Ghost","B) Bloody","C) Dark","D) King's"],answer:1,explanation:"Жауап кілті бойынша мұнара Bloody Tower деп аталады. Дұрыс жауап — B."},
+{section:"Listening",part:"engListening2",q:"14. Some people say they saw Anne Boleyn’s ghost ____ her head.",options:["A) dropping","B) carrying","C) playing with","D) crying over"],answer:1,explanation:"Жауап кілті бойынша ghost carrying her head. Дұрыс жауап — B."},
+{section:"Listening",part:"engListening2",q:"15. Anne Boleyn was arrested and executed in May, ____.",options:["A) 1456","B) 1446","C) 1536","D) 1546"],answer:2,explanation:"Anne Boleyn 1536 жылы өлім жазасына кесілді. Дұрыс жауап — C."},
+{section:"Listening",part:"engListening2",q:"16. Anne Boleyn spent in the room ____.",options:["A) 18 months","B) 18 days","C) 19 days","D) 19 months"],answer:1,explanation:"Жауап кілті бойынша Anne Boleyn 18 days spent in the room. Дұрыс жауап — B."},
+
+{section:"Grammar",part:"engGrammar",q:"17. This ____ name is Bob.",options:["A) mens","B) men’s","C) men","D) man’s"],answer:3,explanation:"Бір ер адамның аты туралы айтылып тұр: this man's name. Дұрыс жауап — D."},
+{section:"Grammar",part:"engGrammar",q:"18. It’s a pity my watch is fast again. I’ve recently had it ____.",options:["A) is repairing","B) to be repair","C) repaired","D) being repaired"],answer:2,explanation:"Have something done құрылымы: had it repaired. Дұрыс жауап — C."},
+{section:"Grammar",part:"engGrammar",q:"19. The room looked nice. Somebody ____ it.",options:["A) is cleaned","B) had cleaned","C) was cleaned","D) has cleaned"],answer:1,explanation:"Room looked nice, себебі біреу оған дейін тазалап қойған. Past Perfect: had cleaned. Дұрыс жауап — B."},
+{section:"Grammar",part:"engGrammar",q:"20. Our younger son doesn’t want to be a lawyer like his ____ brother.",options:["A) old","B) elder","C) older","D) oldest"],answer:1,explanation:"Отбасы мүшелерін салыстырғанда elder brother қолданылады. Дұрыс жауап — B."},
+{section:"Grammar",part:"engGrammar",q:"21. Well, I think you ought to speak to that man ____ standing with a notebook in front of the car.",options:["A) whom","B) who’s","C) whose","D) which"],answer:1,explanation:"Who’s = who is. Мағынасы: the man who is standing. Дұрыс жауап — B."},
+{section:"Grammar",part:"engGrammar",q:"22. While I ____ in the garage, I ____ my back.",options:["A) worked, hurt","B) was working, hurt","C) working, hurt","D) am working, hurted"],answer:1,explanation:"While + Past Continuous, негізгі әрекет Past Simple: was working, hurt. Дұрыс жауап — B."},
+{section:"Grammar",part:"engGrammar",q:"23. He listened to me ____.",options:["A) sadish","B) saddy","C) sadfull","D) sadly"],answer:3,explanation:"Listen етістігін сипаттау үшін adverb керек: sadly. Дұрыс жауап — D."},
+{section:"Grammar",part:"engGrammar",q:"24. It was quite ____ that he passed his examination.",options:["A) surprisable","B) surprising","C) surprised","D) surprise"],answer:1,explanation:"Жағдайды сипаттағанда -ing adjective қолданылады: surprising. Дұрыс жауап — B."},
+{section:"Grammar",part:"engGrammar",q:"25. Supply the correct auxiliary verb. How ____ you spend your summer vacations last year?",options:["A) is","B) does","C) did","D) do"],answer:2,explanation:"Last year — өткен шақ. Сұрақта did көмекші етістігі қолданылады. Дұрыс жауап — C."},
+{section:"Grammar",part:"engGrammar",q:"26. I will ____ volleyball at five p.m. on Friday.",options:["A) be playing","B) be play","C) have played","D) playing"],answer:0,explanation:"Белгілі бір болашақ уақытта болып жатқан әрекет: will be playing. Дұрыс жауап — A."},
+{section:"Grammar",part:"engGrammar",q:"27. Make up a question from the words given below: can / you / what / do?",options:["A) What do you can?","B) Can you do what?","C) Do you can what?","D) What can you do?"],answer:3,explanation:"Дұрыс сөз тәртібі: What can you do? Дұрыс жауап — D."},
+{section:"Grammar",part:"engGrammar",q:"28. ____ you take off your hat please? I ____ see the screen.",options:["A) Could / can’t","B) May / mustn’t","C) Mustn’t / can","D) Should / have to"],answer:0,explanation:"Сыпайы өтініш: Could you...? Себебі I can’t see the screen. Дұрыс жауап — A."},
+{section:"Grammar",part:"engGrammar",q:"29. We expected Dan ____ late.",options:["A) be","B) was","C) is","D) to be"],answer:3,explanation:"Expect + object + to infinitive: expected Dan to be late. Дұрыс жауап — D."},
+{section:"Grammar",part:"engGrammar",q:"30. The play station ____ I bought last month has been broken.",options:["A) which","B) when","C) who","D) whom"],answer:0,explanation:"Затқа қатысты relative pronoun — which. Дұрыс жауап — A."},
+{section:"Grammar",part:"engGrammar",q:"31. Write your name at ____.",options:["A) the page of top","B) top of page","C) the top page","D) the top of the page"],answer:3,explanation:"Дұрыс тіркес: at the top of the page. Дұрыс жауап — D."},
+{section:"Grammar",part:"engGrammar",q:"32. These flowers aren’t very nice. The blue ones are ____.",options:["A) nicerer","B) more nice","C) much nice","D) nicer"],answer:3,explanation:"Nice сын есімінің comparative form — nicer. Дұрыс жауап — D."},
+{section:"Grammar",part:"engGrammar",q:"33. They’re really angry because someone ____ their car.",options:["A) has damaged","B) was damaged","C) damage","D) has been damaged"],answer:0,explanation:"Someone has damaged their car — біреу машинаны бүлдірген. Дұрыс жауап — A."},
+{section:"Grammar",part:"engGrammar",q:"34. By the time the ship reached the island, more than twenty sailors ____.",options:["A) dead","B) had died","C) has died","D) have been died"],answer:1,explanation:"By the time + Past Simple болса, бұған дейін болған әрекет Past Perfect арқылы беріледі: had died. Дұрыс жауап — B."},
+
+{section:"Reading",part:"engReading1",q:"35. ____ are given in competition of the International Children's Book Day.",options:["A) Copybook awards","B) Notebook awards","C) Book awards","D) Laptop awards"],answer:2,explanation:"ICBD competition winners are awarded with books. Дұрыс жауап — C."},
+{section:"Reading",part:"engReading1",q:"36. Andersen loved ____ when he was a child.",options:["A) go for a walk","B) books","C) games","D) toys"],answer:1,explanation:"Мәтінде Andersen had a passionate love for books деп берілген. Дұрыс жауап — B."},
+{section:"Reading",part:"engReading1",q:"37. Andersen’s fairy tales are so ____.",options:["A) expensive","B) cheap","C) popular","D) unpopular"],answer:2,explanation:"Мәтінде they are so popular деп жазылған. Дұрыс жауап — C."},
+{section:"Reading",part:"engReading1",q:"38. ____ competition is held in the International Children's Book Day.",options:["A) Writing competition","B) Listening competition","C) Speaking competition","D) Reading competition"],answer:0,explanation:"Мәтінде writing competitions өткізіледі деп берілген. Дұрыс жауап — A."},
+{section:"Reading",part:"engReading1",q:"39. The aim of the International Board on Books for Young People is ____.",options:["A) to encourage children to visit libraries more","B) to encourage children to read more books","C) to encourage adults to read more books","D) to encourage children to buy books more"],answer:1,explanation:"Мәтінде organization aims at encouraging children to read more books деп берілген. Дұрыс жауап — B."},
+{section:"Reading",part:"engReading1",q:"40. Hans Christian Andersen is famous ____.",options:["A) for his memoirs","B) for his detective stories","C) for his diaries","D) for his fairy tales"],answer:3,explanation:"Andersen is best known for his fairy tales. Дұрыс жауап — D."},
+{section:"Reading",part:"engReading1",q:"41. Christian Anderson's books have been translated into ____ languages.",options:["A) less than 150","B) over 150","C) over 170","D) over 160"],answer:1,explanation:"Мәтінде fairy tales have been translated into over 150 languages деп берілген. Дұрыс жауап — B."},
+{section:"Reading",part:"engReading1",q:"42. The International Children's Book Day encourages ____.",options:["A) the publication of the quality of journals","B) the publication of better quality children's copybooks","C) the publication of high quality children's magazines","D) the publication of better quality children's books"],answer:2,explanation:"Жауап кілті бойынша дұрыс жауап — C."},
+
+{section:"Reading",part:"engReading2",q:"43. When is Thanksgiving celebrated in the US?",options:["A) November 25","B) Four weeks before Christmas","C) Throughout November","D) The Fourth Thursday in November"],answer:3,explanation:"Мәтінде Thanksgiving takes place on the Fourth Thursday in November деп берілген. Дұрыс жауап — D."},
+{section:"Reading",part:"engReading2",q:"44. Thanksgiving is a holiday celebrated predominantly in ____ America.",options:["A) West","B) North","C) East","D) South"],answer:1,explanation:"Мәтінде celebrated predominantly in North America деп берілген. Дұрыс жауап — B."},
+{section:"Reading",part:"engReading2",q:"45. Which event(s) began the tradition of Thanksgiving?",options:["A) The pilgrims' food-creation success and largescale celebratory dinner","B) Nobody is certain","C) An address delivered by President Lincoln","D) A and C"],answer:3,explanation:"Thanksgiving дәстүрі Pilgrims оқиғасымен және Lincoln speech-пен байланысты. Дұрыс жауап — D."},
+{section:"Reading",part:"engReading2",q:"46. Which food(s) are often prepared for Thanksgiving dinner?",options:["A) Turkey","B) Potatoes","C) Stuffing","D) All of the above"],answer:3,explanation:"Мәтінде turkey, mashed potatoes, stuffing сияқты тағамдар айтылған. Дұрыс жауап — D."},
+{section:"Reading",part:"engReading2",q:"47. President ____ initiated the contemporary practice of Thanksgiving.",options:["A) Andrew Johnson","B) James Buchanan","C) Abraham Lincoln","D) Ulysses Grant"],answer:2,explanation:"Мәтінде President Abraham Lincoln initiated the contemporary practice деп берілген. Дұрыс жауап — C."},
+{section:"Reading",part:"engReading2",q:"48. Where is Thanksgiving celebrated?",options:["A) Only in America","B) Only in Canada","C) In English speaking countries","D) Throughout North America and some other parts of the world, albeit in different forms and on different dates"],answer:3,explanation:"Мәтін бойынша Thanksgiving North America-да және басқа жерлерде әртүрлі түрде аталып өтеді. Дұрыс жауап — D."},
+{section:"Reading",part:"engReading2",q:"49. The holiday signifies the immense progress made by pilgrims at Plymouth Plantation circa ____.",options:["A) 1621","B) 1612","C) 1721","D) 1631"],answer:0,explanation:"Мәтінде Plymouth Plantation circa 1621 деп берілген. Дұрыс жауап — A."},
+{section:"Reading",part:"engReading2",q:"50. What is the meaning of Thanksgiving's federal holiday status?",options:["A) The federal government instructs all citizens to celebrate Thanksgiving","B) Only federal government employees celebrate Thanksgiving","C) All federal employees and many other workers are given a day off for Thanksgiving","D) It's difficult to say for sure"],answer:2,explanation:"Federal holiday болғандықтан government employees және most private employees day off алады. Дұрыс жауап — C."}
+];
+
+function renderQuiz(containerId,questions,namePrefix){
+  const container=document.getElementById(containerId);
+  questions.forEach((item,index)=>{
+    let html=`<div class="question"><b>${item.q}</b>`;
+    if(item.image){
+      html+=`<img src="${item.image}" alt="Question image" class="question-image">`;
+    }
+    item.options.forEach((option,optionIndex)=>{
+      html+=`<label><input type="radio" name="${namePrefix}${index}" value="${optionIndex}"> ${option}</label>`;
+    });
+    html+=`</div>`;
+    container.innerHTML+=html;
+  });
+}
+
+function renderEnglish(){
+  englishQuestions.forEach((item,index)=>{
+    const container=document.getElementById(item.part);
+    let html=`<div class="question"><b>${item.q}</b>`;
+    item.options.forEach((option,optionIndex)=>{
+      html+=`<label><input type="radio" name="eng${index}" value="${optionIndex}"> ${option}</label>`;
+    });
+    html+=`</div>`;
+    container.innerHTML+=html;
+  });
+}
+
+renderQuiz("criticalQuiz",criticalQuestions,"critical");
+renderQuiz("analyticalIntro",analyticalIntroQuestions,"analyticalIntro");
+renderQuiz("analyticalText1",analyticalText1Questions,"analyticalText1");
+renderQuiz("analyticalText2",analyticalText2Questions,"analyticalText2");
+renderQuiz("analyticalText3",analyticalText3Questions,"analyticalText3");
+renderQuiz("analyticalText4",analyticalText4Questions,"analyticalText4");
+renderEnglish();
+
+function checkGroup(questions,namePrefix){
+  let score=0;
+  let html="";
+  questions.forEach((item,index)=>{
+    const selected=document.querySelector(`input[name="${namePrefix}${index}"]:checked`);
+    const userAnswer=selected?Number(selected.value):null;
+
+    if(userAnswer===item.answer){
+      score++;
+      html+=`<p class="correct">✔ ${item.q}</p>`;
+    }else{
+      html+=`<p class="wrong">✘ ${item.q}</p>`;
+    }
+
+    html+=`
+      <div class="explanation">
+        <b>Дұрыс жауап:</b> ${item.options[item.answer]}<br>
+        <b>Сіздің жауабыңыз:</b> ${userAnswer!==null?item.options[userAnswer]:"Жауап берілмеді"}<br>
+        <b>Түсіндірме:</b> ${item.explanation}
+      </div>`;
+  });
+  return {score,html};
+}
+
+function checkEnglish(){
+  let score=0,listeningScore=0,grammarScore=0,readingScore=0,html="";
+
+  englishQuestions.forEach((item,index)=>{
+    const selected=document.querySelector(`input[name="eng${index}"]:checked`);
+    const userAnswer=selected?Number(selected.value):null;
+
+    if(userAnswer===item.answer){
+      score++;
+      if(item.section==="Listening") listeningScore++;
+      if(item.section==="Grammar") grammarScore++;
+      if(item.section==="Reading") readingScore++;
+      html+=`<p class="correct">✔ ${item.q}</p>`;
+    }else{
+      html+=`<p class="wrong">✘ ${item.q}</p>`;
+    }
+
+    html+=`
+      <div class="explanation">
+        <b>Дұрыс жауап:</b> ${item.options[item.answer]}<br>
+        <b>Сіздің жауабыңыз:</b> ${userAnswer!==null?item.options[userAnswer]:"Жауап берілмеді"}<br>
+        <b>Түсіндірме:</b> ${item.explanation}
+      </div>`;
+  });
+
+  return {score,listeningScore,grammarScore,readingScore,html};
+}
+
+function checkAnswers(){
+  const critical=checkGroup(criticalQuestions,"critical");
+  const aIntro=checkGroup(analyticalIntroQuestions,"analyticalIntro");
+  const aText1=checkGroup(analyticalText1Questions,"analyticalText1");
+  const aText2=checkGroup(analyticalText2Questions,"analyticalText2");
+  const aText3=checkGroup(analyticalText3Questions,"analyticalText3");
+  const aText4=checkGroup(analyticalText4Questions,"analyticalText4");
+  const english=checkEnglish();
+
+  const analyticalScore=aIntro.score+aText1.score+aText2.score+aText3.score+aText4.score;
+  const totalScore=critical.score+analyticalScore+english.score;
+
+  let level="",messageKaz="",messageRus="";
+  if(totalScore<=30){
+    level="Бастапқы деңгей / Начальный уровень";
+    messageKaz="Сізге әлі көбірек дайындық керек.";
+    messageRus="Вам нужно ещё больше подготовиться.";
+  }else if(totalScore<=60){
+    level="Орташа деңгей / Средний уровень";
+    messageKaz="Негізгі түсінік бар, бірақ қосымша практика қажет.";
+    messageRus="Базовое понимание есть, но нужна дополнительная практика.";
+  }else{
+    level="Жақсы дайындық / Хорошая готовность";
+    messageKaz="Нәтижеңіз жақсы. Енді тұрақты қайталау маңызды.";
+    messageRus="Результат хороший. Теперь важно регулярно повторять.";
+  }
+
+  const finalBlock=`
+    <div class="result-box">
+      <h2>Жалпы нәтижеңіз: ${totalScore}/80</h2>
+      <h2>${level}</h2>
+      <p>${messageKaz}</p>
+      <p>${messageRus}</p>
+      <div class="score-grid">
+        <div class="score-item">Сыни ойлау: ${critical.score}/15</div>
+        <div class="score-item">Аналитикалық ойлау: ${analyticalScore}/15</div>
+        <div class="score-item">English: ${english.score}/50</div>
+        <div class="score-item">Listening: ${english.listeningScore}/16</div>
+        <div class="score-item">Lexico-Grammar: ${english.grammarScore}/18</div>
+        <div class="score-item">Reading: ${english.readingScore}/16</div>
+      </div>
+    </div>`;
+
+  document.getElementById("results").innerHTML=finalBlock;
+
+  document.getElementById("criticalResults").innerHTML=
+    "<h2>Сыни ойлау жауаптары</h2>"+critical.html;
+
+  document.getElementById("analyticalResults").innerHTML=
+    "<h2>Аналитикалық ойлау жауаптары</h2>"+aIntro.html+aText1.html+aText2.html+aText3.html+aText4.html;
+
+  document.getElementById("englishResults").innerHTML=
+    "<h2>English жауаптары</h2>"+english.html;
+
+  document.getElementById("results").scrollIntoView({behavior:"smooth"});
+}
+
+document.addEventListener("contextmenu",e=>e.preventDefault());
+document.addEventListener("dragstart",e=>e.preventDefault());
+document.addEventListener("copy",function(e){
+  e.preventDefault();
+  alert("Бұл сайт авторлық құқықпен қорғалған. Көшіруге болмайды. © @elnazm_ln");
+});
+document.addEventListener("keydown",function(e){
+  const k=e.key.toLowerCase();
+  if((e.ctrlKey||e.metaKey) && ["c","u","s","p"].includes(k)){
+    e.preventDefault();
+    alert("Көшіру/сақтау шектелген. © @elnazm_ln");
+  }
+});
+</script>
+
+</body>
+</html>
